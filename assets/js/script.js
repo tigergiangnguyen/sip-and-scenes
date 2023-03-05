@@ -1,5 +1,5 @@
 var searchBtn = $("#searchButton");
 
 searchBtn.click (function() {
-    window.location.href="/";
+    window.location.href="./results.html";
 });
