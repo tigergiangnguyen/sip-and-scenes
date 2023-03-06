@@ -23,9 +23,11 @@ function renderDrinks() {
     var drinkName = $('.drinkName');
     var drinkDesc = $('.drinkDesc');
     var drinkImg = $('.drinkImg');
+    var currentDrink = 0;
 
     $.each(drinkArray, function(i) {
        console.log(i)
+       drinkName[i].text = drinkArray[currentDrink];
     });
    
 }
