@@ -19,7 +19,6 @@ function renderSavedGenre() {
 
 
 
-
 // Empty array for drink information to go into
 var drinkArray = [];
 
