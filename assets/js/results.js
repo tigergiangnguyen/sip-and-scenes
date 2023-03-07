@@ -1,5 +1,27 @@
+// Saves genre in local storage
+function renderSavedGenre() {
+    var lastSavedGenre = localStorage.getItem("userGenre");
+    if (lastSavedGenre !== null) {
+        document.getElementById("saved-genre").innerHTML = lastSavedGenre;
+    } else {
+        return;
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
 // Empty array for drink information to go into
 var drinkArray = [];
+
 
 // Getting Cocktail API and pushing it to drinkArray
 function getDrink() {
@@ -10,7 +32,8 @@ return fetch ('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then(function (data) {
         drinkArray.push(data.drinks[0])
     })
-}
+};
+
 
 // Copies getDrink to get second drink
 getDrink().then(function() {
@@ -38,4 +61,4 @@ function renderDrinks() {
         // appends the drinkDiv to the cocktail container on the results.html page
         $('#cocktail-container').append(drinkDiv);
     }
-}
+};
