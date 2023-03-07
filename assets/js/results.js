@@ -32,3 +32,12 @@ function renderDrinks() {
    
 }
 
+function renderSavedGenre() {
+    var lastSavedGenre = localStorage.getItem("userGenre");
+    if (lastSavedGenre !== null) {
+        document.getElementById("saved-genre").innerHTML = lastSavedGenre;
+    } else {
+        return;
+    }
+}
+
