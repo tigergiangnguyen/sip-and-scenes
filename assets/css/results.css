@@ -1,18 +1,30 @@
-h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-}
-.start-button {
-    background-color: aquamarine;
-    border: none;
-    color: azure;
-    padding: 12px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
+* {
+    background-color: black;
+    color: whitesmoke;
+    
 }
 
+h1 {
+    font-family: "Limelight", sans-serif;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0px 0px 5px 0px;
+
+}
+
+#cocktail-container {
+    width: 30%;
+    word-wrap: break-word;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: left;
+    
+}
+
+.drinkImg {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 400px;
+}
