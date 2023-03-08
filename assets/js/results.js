@@ -13,9 +13,41 @@ function renderSavedGenre() {
   };
 
 
+var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=game%20of&limit=20&sortArg=moviemeter%2Casc&genre=comedy';
+var movieArray = [];
+
+// fetch(searchUrl, options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
+
+function getMovie() {
+    return fetch (searchUrl, options)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            movieArray.push(data.movies[0]);
+        })
+};
 
 
 
+
+
+function renderMovies() {
+    for (i = 0; i < movieArray.length; i++) {
+        var currentMovie = movieArray[i];
+        var movieDiv = $('<div>').addClass("movies");
+        var movieName = $('<h3>').addClass("movieName");
+        movieName.text(currentMovie.strMovie);
+        movieDiv.append(movieName);
+        var movieDescr = $('<ul>').addClass("movie-description");
+        for (var j = 0; j < 15; j++) {
+            if (currentMovie['strDescription' + j] && currentMovie)
+        }
+        }
+}
 
 // this is the code to prevent reaching the Movie API call limit
 // these are just place-holder names that you can change when making the functions
