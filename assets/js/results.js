@@ -8,7 +8,18 @@ function renderSavedGenre() {
     }
   };
 
+  const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'aaecda7e5dmsh4c3c75691c4c8e8p19be3djsn12b722b15a65',
+		'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
+	}
+};
 
+fetch('https://online-movie-database.p.rapidapi.com/title/v2/find?title=game%20of&limit=20&sortArg=moviemeter%2Casc&genre=comedy', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
 
 
 
