@@ -12,13 +12,6 @@ function renderSavedGenre() {
     }
   };
 
-  const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'aaecda7e5dmsh4c3c75691c4c8e8p19be3djsn12b722b15a65',
-		'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
-	}
-};
 
 var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=game%20of&limit=20&sortArg=moviemeter%2Casc&genre=comedy';
 var movieArray = [];
@@ -37,6 +30,10 @@ function getMovie() {
             movieArray.push(data.movies[0]);
         })
 };
+
+
+
+
 
 function renderMovies() {
     for (i = 0; i < movieArray.length; i++) {
