@@ -16,19 +16,35 @@ function renderSavedGenre() {
 	}
 };
 
-fetch('https://online-movie-database.p.rapidapi.com/title/v2/find?title=game%20of&limit=20&sortArg=moviemeter%2Casc&genre=comedy', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=game%20of&limit=20&sortArg=moviemeter%2Casc&genre=comedy';
+var movieArray = [];
 
+// fetch(searchUrl, options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
 
+function getMovie() {
+    return fetch (searchUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            movieArray.push(data.movies[0]);
+        })
+};
 
+function renderMovies() {
+    for (i = 0; i < movieArray.length; i++) {
+        var currentMovie = movieArray[i];
+        var movieDiv = $('<div>').addClass("movies");
+        var movieName = $('<h3>').addClass("movieName");
+        movieName.text(currentMovie.strMovie);
+        movieDiv.append(movieName);
 
-
-
-
-
-
+        var movieDescr = $('<ul>')
+    }
+}
 
 // Empty array for drink information to go into
 var drinkArray = [];
