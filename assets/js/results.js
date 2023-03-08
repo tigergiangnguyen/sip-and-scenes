@@ -45,7 +45,10 @@ function renderMovies() {
         var movieName = $('<h3>').addClass("movieName");
         movieName.text(currentMovie.strMovie);
         movieDiv.append(movieName);
-        var movieDescr = $('<ul>')
+        var movieDescr = $('<ul>').addClass("movie-description");
+        for (var j = 0; j < 15; j++) {
+            if (currentMovie['strDescription' + j] && currentMovie)
+        }
         }
 }
 
