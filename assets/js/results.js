@@ -8,13 +8,20 @@ function renderSavedGenre() {
     }
   };
 
+  // Define the array
+  let movies = [];
 
-
-
-
-
-
-
+  // Add movies to the array from the API
+  function letMovies () {
+  return fetch ('https://rapidapi.com/category/Entertainment') 
+    .then(response => response.json())
+    .then(data => {
+      // Loop through the data and add each movie to the array
+      data.forEach(movie => {
+        movies.push(movie);
+      });
+    })  
+  }
 
 
 
