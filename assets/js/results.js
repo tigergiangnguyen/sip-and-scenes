@@ -6,31 +6,40 @@ var access_api = false;
 function renderSavedGenre() {
     var lastSavedGenre = localStorage.getItem("userGenre");
     if (lastSavedGenre !== null) {
-        document.getElementById("saved-genre").innerHTML = lastSavedGenre;
+        // document.getElementById("saved-genre").innerHTML = lastSavedGenre;
     } else {
         return;
     }
+    var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=the&limit=20&sortArg=moviemeter%2Casc&genre=' + lastSavedGenre;
+    var movieArray = [];
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'aaecda7e5dmsh4c3c75691c4c8e8p19be3djsn12b722b15a65',
+            'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
+        }
+    };
+    // fetch(searchUrl, options)
+    // 	.then(response => response.json())
+    // 	.then(response => console.log(response))
+    // 	.catch(err => console.error(err));
+    
+    function getMovie() {
+        console.log(searchUrl);
+        return fetch (searchUrl, options)
+        .then(function (response) {
+            return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                movieArray.push(data.movies[0]);
+            })
+    };
+        getMovie();
   };
 
 
-var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=game%20of&limit=20&sortArg=moviemeter%2Casc&genre=comedy';
-var movieArray = [];
-
-// fetch(searchUrl, options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-function getMovie() {
-    return fetch (searchUrl, options)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            movieArray.push(data.movies[0]);
-        })
-};
-
+renderSavedGenre();
 
 
 
@@ -43,10 +52,8 @@ function renderMovies() {
         movieName.text(currentMovie.strMovie);
         movieDiv.append(movieName);
         var movieDescr = $('<ul>').addClass("movie-description");
-        for (var j = 0; j < 15; j++) {
-            if (currentMovie['strDescription' + j] && currentMovie)
-        }
-        }
+        $("#movie-container").append(movieDiv);
+    } 
 }
 
 // this is the code to prevent reaching the Movie API call limit
