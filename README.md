@@ -16,6 +16,10 @@ Sip & Scenes is a website that asks the user to pick their desired genre of a mo
 - TheCocktailDB (Third Party API)
 - RapidAPI - Movie Database Alternative (Third Party API)
 
+![title-page](https://user-images.githubusercontent.com/97854086/224571905-30fd6d96-d8cd-4924-8864-ebb329726f38.jpg)
+![results](https://user-images.githubusercontent.com/97854086/224572010-608fe8f1-3dd8-4d77-96be-275f5823ece9.jpg)
+
+
 ## Credits
  - https://github.com/gabriellapinto
  - https://github.com/Simonhorrabin
