@@ -24,20 +24,38 @@ button {
     cursor: pointer;
     border-radius: 10px;
     border-width: thin;
+    border-color: white;
     float: left;
     margin-top: 6px;
     margin-left: 15px;
 
 }
 
-#cocktail-container {
-    width: 30%;
-    word-wrap: break-word;
-    font-size: 20px;
-    text-align: left;
-
+#movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
+#cocktail-container {
+    font-size: 20px;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-left: 50px;
+}
+
+.drinkName {
+text-align: center;
+}
+
+.drinkIns {
+    word-wrap: normal;
+    width: 400px;
+}
+
+.movieImg,
 .drinkImg {
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -46,11 +64,25 @@ button {
 
 }
 
-h4 {
+.movieImg {
+    box-shadow: 0px 0px 10px 5px white;
+}
+
+.drinkImg {
+    box-shadow: 0px 0px 10px 6px rgb(114, 113, 113);
+}
+
+.movie-title,
+.cocktail-title {
+    font-size: 30px;
+    margin-top: 1%;
     text-align: center;
 }
 
+.cocktail-title {
+    margin-top: 25px;
+}
 
-.movie-title {
-    margin-top: 1%;
+h4 {
+    text-align: center;
 }
