@@ -1,13 +1,13 @@
 * {
-    font-family: "Montserrat";
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 h1 {
     font-family: "Limelight", sans-serif;
-    box-shadow: 0 0 16px 5px;
-    border-radius: 10px;
+    
 }
 
 body {
     background-image: url("../background.png");
 }
+
