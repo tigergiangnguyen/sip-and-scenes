@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,20 +9,21 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Sip & Scenes</title>
 </head>
-
 <body>
+    <!--Main title-->
     <header>
         <h1 class="mt-[15%] text-7xl text-white text-center">Sip & Scenes</h1>
     </header>
-
+    <!--Div for subsection of header text-->
     <div class="mt-[35px] text-3xl text-white text-center">
         <div class="font-semibold">
-            <h2>It's time to *Mix* up your movie night!</h2>
+            <h2>It's time to *Mix* up your movie/show night!</h2>
         </div>
         <div class="mt-[15px]">
             <label for="genre">What genre are you in the mood for?</label>
         </div>
     </div>
+    <!--Drop down box options for genre-->
     <div class="text-3xl mt-[20px] text-center">
         <select id="genre-selector" class="rounded-lg bg-white hover:bg-[#E8E2E2] text-center font-serif">
             <option value="action">Action</option>
@@ -39,6 +39,7 @@
             <option value="animation">Animation</option>
         </select>
     </div>
+    <!--Search button to search for movies/shows-->
     <div class="text-center">
         <button id="searchButton" class="bg-white mt-[10px] px-1 border-2 border-[#40513B] rounded-md font-serif"
             class="buttonClick" type="button">Search</button>
@@ -46,5 +47,4 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
-
 </html>
