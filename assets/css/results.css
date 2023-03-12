@@ -73,13 +73,13 @@ text-align: center;
 }
 
 .movie-title,
-.cocktail-title {
+.title {
     font-size: 30px;
     margin-top: 1%;
     text-align: center;
 }
 
-.cocktail-title {
+.title {
     margin-top: 25px;
 }
 
