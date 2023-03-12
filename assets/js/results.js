@@ -6,48 +6,58 @@ var access_api = false;
 function renderSavedGenre() {
     var lastSavedGenre = localStorage.getItem("userGenre");
     if (lastSavedGenre !== null) {
-        document.getElementById("saved-genre").innerHTML = lastSavedGenre;
+        // document.getElementById("saved-genre").innerHTML = lastSavedGenre;
     } else {
         return;
     }
-  };
-
-
-var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=game%20of&limit=20&sortArg=moviemeter%2Casc&genre=comedy';
-var movieArray = [];
-
-// fetch(searchUrl, options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-function getMovie() {
-    return fetch (searchUrl, options)
+    var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=the&limit=20&sortArg=moviemeter%2Casc&genre=' + lastSavedGenre;
+    
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'aaecda7e5dmsh4c3c75691c4c8e8p19be3djsn12b722b15a65',
+            'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
+        }
+    };
+  
+    function getMovie() {
+        return fetch (searchUrl, options)
         .then(function (response) {
             return response.json();
-        })
-        .then(function (data) {
-            movieArray.push(data.movies[0]);
-        })
-};
+            })
+            .then(function (data) {
+                var randomMovieArray = [];
+               
+                for (i = 0; i < 3; i++) {
+                    var randomMovie = data.results[Math.floor(Math.random()*data.results.length)];
+                    randomMovieArray.push(randomMovie);
+                    var removedMovieIndex = data.results.indexOf(randomMovie);
+                    data.results.splice(removedMovieIndex, 1);
+                }
+                renderMovies(randomMovieArray);
+            })
+    };
+        getMovie();
+  };
+
+renderSavedGenre();
 
 
-
-
-
-function renderMovies() {
+function renderMovies(movieArray) {
     for (i = 0; i < movieArray.length; i++) {
         var currentMovie = movieArray[i];
+        
         var movieDiv = $('<div>').addClass("movies");
+
         var movieName = $('<h3>').addClass("movieName");
-        movieName.text(currentMovie.strMovie);
+        movieName.text(currentMovie.title);
         movieDiv.append(movieName);
-        var movieDescr = $('<ul>').addClass("movie-description");
-        // for (var j = 0; j < 15; j++) {
-        //     if (currentMovie['strDescription' + j] && currentMovie)
-        // }
-        }
-}
+        var movieImg = $('<img>').addClass("movieImg").attr("src", currentMovie.image.url);
+        movieDiv.append(movieImg);
+
+        $("#movie-container").append(movieDiv);
+    } 
+};
 
 // this is the code to prevent reaching the Movie API call limit
 // these are just place-holder names that you can change when making the functions
@@ -61,6 +71,7 @@ function renderMovie(movie_data)
     //code
 }
 
+// ----- [DRINKS CODE] ----- //
 
 // Empty array for drink information to go into
 var drinkArray = [];
@@ -75,7 +86,6 @@ return fetch ('https://www.thecocktaildb.com/api/json/v1/1/random.php')
         drinkArray.push(data.drinks[0])
     })
 };
-
 
 // Renders drinks as HTML elements and displays them to the page
 function renderDrinks() {
