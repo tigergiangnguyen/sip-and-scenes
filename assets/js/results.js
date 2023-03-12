@@ -11,7 +11,6 @@ function renderSavedGenre() {
         return;
     }
     var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=the&limit=20&sortArg=moviemeter%2Casc&genre=' + lastSavedGenre;
-    
     const options = {
         method: 'GET',
         headers: {
@@ -19,42 +18,45 @@ function renderSavedGenre() {
             'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
         }
     };
-  
+    // Gets movie API data
     function getMovie() {
         return fetch (searchUrl, options)
         .then(function (response) {
             return response.json();
             })
             .then(function (data) {
+                // Empty array for movie selections
                 var randomMovieArray = [];
-               
+                // For loop to loop through each movie 3 times and randomly picks a movie in picked genre
                 for (i = 0; i < 3; i++) {
                     var randomMovie = data.results[Math.floor(Math.random()*data.results.length)];
                     randomMovieArray.push(randomMovie);
                     var removedMovieIndex = data.results.indexOf(randomMovie);
                     data.results.splice(removedMovieIndex, 1);
-                }
+                };
                 renderMovies(randomMovieArray);
-            })
+            });
     };
         getMovie();
   };
 
 renderSavedGenre();
 
-
+// Displays movie elements to results.html page
 function renderMovies(movieArray) {
     for (i = 0; i < movieArray.length; i++) {
+        // Array to display movies
         var currentMovie = movieArray[i];
-        
+        // Div to put movie/show data inside of 
         var movieDiv = $('<div>').addClass("movies");
-
+        // h3 element to hold movie/show name
         var movieName = $('<h3>').addClass("movieName");
         movieName.text(currentMovie.title);
         movieDiv.append(movieName);
+        // Img element to show movie/show's poster (changes src attr)
         var movieImg = $('<img>').addClass("movieImg").attr("src", currentMovie.image.url);
         movieDiv.append(movieImg);
-
+        // Appends movieDiv to the main movie containter in the results.html
         $("#movie-container").append(movieDiv);
     } 
 };
