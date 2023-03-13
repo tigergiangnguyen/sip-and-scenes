@@ -2,11 +2,6 @@
 // Saves genre in local storage
 function renderSavedGenre() {
     var lastSavedGenre = localStorage.getItem("userGenre");
-    if (lastSavedGenre !== null) {
-        // document.getElementById("saved-genre").innerHTML = lastSavedGenre;
-    } else {
-        return;
-    }
     var searchUrl = 'https://online-movie-database.p.rapidapi.com/title/v2/find?title=the&limit=20&sortArg=moviemeter%2Casc&genre=' + lastSavedGenre;
     const options = {
         method: 'GET',
